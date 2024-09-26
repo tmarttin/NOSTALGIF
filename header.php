@@ -35,7 +35,7 @@
     </div>
 
     <!-- Barra de Navegação do Sistema -->
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+    <nav class="navbar navbar-expand-sm  sticky-top">
         <div class="container-fluid" style="background-color:#64c27b;">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>

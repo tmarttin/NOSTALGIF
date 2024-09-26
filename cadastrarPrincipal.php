@@ -3,7 +3,7 @@
 <?php
 
     //Bloco para declaração de variáveis para receber dados do form
-    $nomePrincipal = $descricaoPrincipal =  $dtInicioPrincipal = $dtFimPrincipal="";
+    $nomePrincipal = $descricaoPrincipal =  $dtInicioPrincipal ="";
 
     $tudoCerto = true; //Variável responsável por verificar se os campos foram devidamente preenchidos
 
@@ -36,16 +36,6 @@
         }
         else{
             $dtInicioPrincipal = testar_entrada($_POST["dtInicioPrincipal"]);
-        }
-
-        
-        //Verifica se o campo "dtNascPrincipal" do form está vazio
-        if(empty($_POST["dtFimPrincipal"])){
-            echo "<div class='alert alert-warning text-center'>Atenção! o campo <strong>DATA FIM</strong> é obrigatório!</div>";
-            $tudoCerto = false;
-        }
-        else{
-            $dtFimPrincipal = testar_entrada($_POST["dtFimPrincipal"]);
         }
 
 
@@ -84,14 +74,14 @@
         if($tudoCerto && $uploadOK){
 
             //Cria uma QUERY responsável por realizar a inserção dos dados do(a) Principal no BD
-            $inserirPrincipal = "INSERT INTO Principal (nome, foto, descricao, data_inicio, data_fim)
-                                    VALUES ('$nomePrincipal', '$fotoPrincipal', '$descricaoPrincipal','$dtInicioPrincipal','$dtFimPrincipal')";
+            $inserirPrincipal = "INSERT INTO principal (nomePrincipal, fotoPrincipal, descricaoPrincipal, dtInicioPrincipal)
+                                    VALUES ('$nomePrincipal', '$fotoPrincipal', '$descricaoPrincipal','$dtInicioPrincipal')";
 
             //Toda vez que precisarmos executar operações no BD, precisamos incluir o arquivo de conexão
             include("conexaoBD.php");
             
             //Função para executar QUERYs no BD
-             if(mysqli_query($link, $inserirPrincipal)){
+             if(mysqli_query( $conn, $inserirPrincipal)){
                 echo "<div class='alert alert-success text-center'><strong>Principal</strong> cadastrado(a) com sucesso!</div>";
                 echo "<div class='container mt-3'>
                     <div class='container mt-3 text-center'>
@@ -105,10 +95,6 @@
                         <tr>
                             <th>data inicio:</th>
                             <td>$dtInicioPrincipal</td>
-                        </tr>
-                        <tr>
-                            <th>data fim:</th>
-                            <td>$dtFimPrincipal</td>
                         </tr>
                     </table>
                 </div>";
